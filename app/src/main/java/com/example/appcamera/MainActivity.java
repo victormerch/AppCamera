@@ -13,13 +13,14 @@ import android.widget.ImageView;
 public class MainActivity extends AppCompatActivity {
     private Button btnCamera;
     private ImageView iv;
+    private String currentPhotoPath;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        btnCamera = findViewById(R.id.button);
-        iv = findViewById(R.id.imageView);
+        btnCamera = (Button) findViewById(R.id.button);
+        iv = (ImageView) findViewById(R.id.imageView);
 
         btnCamera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -34,10 +35,9 @@ public class MainActivity extends AppCompatActivity {
     private void abrirCamara(){
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 
-        if (intent.resolveActivity(getPackageManager()) != null){
-            startActivityForResult(intent,1);
+        startActivityForResult(intent,1);
 
-        }
+
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -49,4 +49,8 @@ public class MainActivity extends AppCompatActivity {
             iv.setImageBitmap(imgB);
         }
     }
+
+
+
+
 }
