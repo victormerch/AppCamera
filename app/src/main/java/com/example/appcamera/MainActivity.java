@@ -10,6 +10,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+
 public class MainActivity extends AppCompatActivity {
     private Button btnCamera;
     private ImageView iv;
@@ -47,8 +51,20 @@ public class MainActivity extends AppCompatActivity {
             Bitmap imgB = (Bitmap) extras.get("data");
 
             iv.setImageBitmap(imgB);
+            File path = getApplicationContext().getFilesDir();
+            File foto = new File(path,"foto.jpg");
+
+            try {
+                FileOutputStream os = new FileOutputStream(foto);
+                imgB.compress(Bitmap.CompressFormat.JPEG,100,os);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+
         }
     }
+
+
 
 
 
