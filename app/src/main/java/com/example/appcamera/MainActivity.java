@@ -123,6 +123,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
             int photoW = bmOptions.outWidth;
             int photoH = bmOptions.outHeight;
 
